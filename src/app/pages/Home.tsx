@@ -37,12 +37,12 @@ export default function Home() {
   ];
 
   const floatingElements = [
-    { icon: <Sparkles className="w-8 h-8" />, top: "15%", left: "10%", delay: 0, color: "var(--pastel-purple)" },
+    { icon: <Star className="w-8 h-8" />, top: "15%", left: "10%", delay: 0, color: "var(--pastel-purple)" },
     { icon: <Heart className="w-8 h-8" />, top: "25%", right: "15%", delay: 0.2, color: "var(--pastel-pink)" },
-    { icon: <Star className="w-8 h-8" />, top: "60%", left: "8%", delay: 0.4, color: "var(--pastel-blue)" },
-    { icon: <Heart className="w-8 h-8" />, top: "70%", right: "12%", delay: 0.6, color: "var(--pastel-purple)" },
+    { icon: <Heart className="w-8 h-8" />, top: "60%", left: "8%", delay: 0.4, color: "var(--pastel-blue)" },
+    { icon: <Star className="w-8 h-8" />, top: "70%", right: "12%", delay: 0.6, color: "var(--pastel-purple)" },
     { icon: <Sparkles className="w-8 h-8" />, top: "40%", right: "8%", delay: 0.3, color: "var(--pastel-pink)" },
-    { icon: <Star className="w-8 h-8" />, top: "85%", left: "15%", delay: 0.5, color: "var(--pastel-blue)" },
+    { icon: <Sparkles className="w-8 h-8" />, top: "85%", left: "15%", delay: 0.5, color: "var(--pastel-blue)" },
   ];
 
   return (
