@@ -34,10 +34,10 @@ export default function Navigation() {
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `px-5 py-2 rounded-full text-[var(--pastel-purple)] transition-all ${
+                `px-5 py-2 rounded-full text-[var(--type-purple)] transition-all ${
                   isActive
-                    ? "bg-[var(--pastel-purple)]/20 text-[var(--pastel-purple)]"
-                    : "hover:bg-[var(--pastel-purple)]/10"
+                    ? "bg-[var(--type-purple)]/20 text-[var(--type-purple)]"
+                    : "hover:bg-[var(--type-purple)]/10"
                 }`
               }
               style={{ fontWeight: 500 }}
@@ -74,10 +74,10 @@ export default function Navigation() {
                   end={link.to === "/"}
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `px-5 py-3 rounded-2xl text-[var(--pastel-purple)] transition-all ${
+                    `px-5 py-3 rounded-2xl text-[var(--type-purple)] transition-all ${
                       isActive
-                        ? "bg-[var(--pastel-purple)]/20"
-                        : "hover:bg-[var(--pastel-purple)]/10"
+                        ? "bg-[var(--type-purple)]/20"
+                        : "hover:bg-[var(--type-purple)]/10"
                     }`
                   }
                   style={{ fontWeight: 500 }}
