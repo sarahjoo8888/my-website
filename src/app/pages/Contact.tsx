@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Send, Github, Linkedin, Twitter, Instagram, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, Github, Linkedin, MessageSquareHeart, CheckCircle, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
@@ -75,22 +75,23 @@ export default function Contact() {
   const isSending = status === "sending";
 
   return (
-    <div className="min-h-screen py-20 px-6 flex items-center justify-center">
+    <div className="min-h-screen py-8 px-6 flex items-center justify-center">
       <div className="max-w-2xl w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
-          <h1
-            className="font-[family-name:var(--font-family-display)] mb-4"
-            style={{ fontSize: "3.5rem", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            <span className="bg-gradient-to-r from-[var(--pastel-purple)] to-[var(--pastel-pink)] bg-clip-text text-transparent">
-              let's chat!
-            </span>
-          </h1>
+          <div className="flex items-center justify-center gap-3 mb-1">
+            <MessageSquareHeart className="w-8 h-8" style={{ color: "var(--pastel-purple)" }} />
+            <h1
+              className="font-[family-name:var(--font-family-display)] bg-gradient-to-r from-[var(--pastel-purple)] via-[var(--pastel-blue)] to-[var(--pastel-pink)] bg-clip-text text-transparent"
+              style={{ fontSize: "3rem", fontWeight: 700 }}
+            >
+              Let's Chat!
+            </h1>
+          </div>
           <p
             className="text-lg text-[var(--foreground)]/70 max-w-md mx-auto"
             style={{ fontWeight: 400 }}
@@ -104,7 +105,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-3xl p-8 md:p-10 shadow-xl mb-12"
+          className="bg-white rounded-3xl p-8 md:p-10 shadow-xl mb-8"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Field */}
@@ -255,7 +256,7 @@ export default function Contact() {
           className="text-center"
         >
           <p
-            className="mb-6 text-[var(--foreground)]/70"
+            className="mb-4 text-[var(--foreground)]/70"
             style={{ fontWeight: 500 }}
           >
             Or find me on:
