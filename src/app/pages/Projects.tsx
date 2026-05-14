@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight, Lightbulb } from "lucide-react";
 import { useState } from "react";
 
 function ImageCarousel({ images, title }: { images: string[]; title: string }) {
@@ -99,28 +99,23 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen py-20 px-6">
+    <div className="min-h-screen py-6 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
-          <h1
-            className="font-[family-name:var(--font-family-display)] mb-4"
-            style={{ fontSize: "3.5rem", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            <span className="bg-gradient-to-r from-[var(--pastel-purple)] to-[var(--pastel-pink)] bg-clip-text text-transparent">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Lightbulb className="w-8 h-8" style={{ color: "var(--pastel-purple)" }} />
+            <h1
+              className="font-[family-name:var(--font-family-display)] bg-gradient-to-r from-[var(--pastel-purple)] via-[var(--pastel-blue)] to-[var(--pastel-pink)] bg-clip-text text-transparent"
+              style={{ fontSize: "3rem", fontWeight: 700 }}
+            >
               Projects
-            </span>
-          </h1>
-          <div
-            className="w-32 h-1.5 mx-auto rounded-full"
-            style={{
-              background: "linear-gradient(90deg, var(--pastel-purple), var(--pastel-pink))",
-            }}
-          />
+            </h1>
+          </div>
         </motion.div>
 
         {/* Projects Grid */}
