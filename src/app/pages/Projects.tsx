@@ -1,8 +1,196 @@
-export default function Projects() {
-    return (
-        <div className="projects">
-            <h1>Projects</h1>
-            <p>This is the projects page.</p>
+import { motion, AnimatePresence } from "motion/react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+
+function ImageCarousel({ images, title }: { images: string[]; title: string }) {
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((i) => (i - 1 + images.length) % images.length);
+  const next = () => setCurrent((i) => (i + 1) % images.length);
+
+  return (
+    <div className="relative overflow-hidden bg-gray-100 flex items-center justify-center" style={{ height: "320px" }}>
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={`${title} - ${current + 1}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="h-full w-auto object-contain"
+        />
+      </AnimatePresence>
+
+      {/* Arrows */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-[var(--pastel-purple)] hover:bg-[var(--pastel-purple)] hover:text-white transition-all"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-[var(--pastel-purple)] hover:bg-[var(--pastel-purple)] hover:text-white transition-all"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </>
+      )}
+
+      {/* Dots */}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className="w-2 h-2 rounded-full transition-all"
+              style={{
+                backgroundColor: i === current ? "var(--pastel-purple)" : "rgba(255,255,255,0.6)",
+                transform: i === current ? "scale(1.3)" : "scale(1)",
+              }}
+            />
+          ))}
         </div>
-    );
+      )}
+    </div>
+  );
 }
+
+export default function Projects() {
+  const projects = [
+    {
+      id: 1,
+      title: "Bleacher Rentals Driver App",
+      description:
+        "A sleek and intuitive mobile app for drivers to view their routes, with real-time updates and seamless navigation.",
+      images: [
+        "/driverAppProject/tripsView.jpg",
+        "/driverAppProject/completedTrip.jpg",
+        "/driverAppProject/calendar.jpg",
+        "/driverAppProject/driverProfile.jpg",
+        "/driverAppProject/incompleteAccess.jpg",
+      ],
+      tags: ["React Native", "TypeScript", "Expo", "Firebase"],
+      github: null,
+      borderColor: "var(--pastel-purple)",
+    },
+    {
+      id: 2,
+      title: "Ruby Period App Tracker",
+      description:
+        "A user-friendly mobile app that helps users track their menstrual cycles, symptoms, and overall health with personalized insights and reminders.",
+      images: [
+        "/rubyPeriodApp/Cycle.png",
+        "/rubyPeriodApp/Insights.png",
+        "/rubyPeriodApp/Prelim_Qs.png",
+        "/rubyPeriodApp/Symptom_Logging.png",
+        "/rubyPeriodApp/Explore_Recommendations.png",
+        "/rubyPeriodApp/Dietary_Details.png",
+      ],
+      tags: ["Kotlin", "Jetpack Compose", "Firebase"],
+      github: null,
+      borderColor: "var(--pastel-purple)",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h1
+            className="font-[family-name:var(--font-family-display)] mb-4"
+            style={{ fontSize: "3.5rem", fontWeight: 700, lineHeight: 1.2 }}
+          >
+            <span className="bg-gradient-to-r from-[var(--pastel-purple)] to-[var(--pastel-pink)] bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h1>
+          <div
+            className="w-32 h-1.5 mx-auto rounded-full"
+            style={{
+              background: "linear-gradient(90deg, var(--pastel-purple), var(--pastel-pink))",
+            }}
+          />
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all"
+              style={{ borderTop: `4px solid ${project.borderColor}` }}
+            >
+              <ImageCarousel images={project.images} title={project.title} />
+
+              {/* Content */}
+              <div className="p-6">
+                <h2
+                  className="mb-3"
+                  style={{ fontSize: "1.5rem", fontWeight: 600, lineHeight: 1.3 }}
+                >
+                  {project.title}
+                </h2>
+
+                <p
+                  className="text-[var(--foreground)]/70 mb-4"
+                  style={{ fontSize: "0.9375rem", lineHeight: 1.6, fontWeight: 400 }}
+                >
+                  {project.description}
+                </p>
+
+                {/* Tech Stack Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 rounded-full text-sm"
+                      style={{
+                        backgroundColor: `${project.borderColor}20`,
+                        color: project.borderColor,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+          {/* Action Buttons */}
+                <div className="flex gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 transition-all hover:scale-105"
+                      style={{ borderColor: project.borderColor, color: project.borderColor, fontWeight: 500 }}
+                    >
+                      <Github size={18} />
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+ 
