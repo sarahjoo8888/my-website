@@ -79,6 +79,23 @@ export default function Projects() {
       github: null,
       borderColor: "var(--pastel-purple)",
     },
+    {
+      id: 2,
+      title: "Ruby Period App Tracker",
+      description:
+        "A user-friendly mobile app that helps users track their menstrual cycles, symptoms, and overall health with personalized insights and reminders.",
+      images: [
+        "/rubyPeriodApp/Cycle.png",
+        "/rubyPeriodApp/Insights.png",
+        "/rubyPeriodApp/Prelim_Qs.png",
+        "/rubyPeriodApp/Symptom_Logging.png",
+        "/rubyPeriodApp/Explore_Recommendations.png",
+        "/rubyPeriodApp/Dietary_Details.png",
+      ],
+      tags: ["Kotlin", "Jetpack Compose", "Firebase"],
+      github: null,
+      borderColor: "var(--pastel-purple)",
+    },
   ];
 
   return (
