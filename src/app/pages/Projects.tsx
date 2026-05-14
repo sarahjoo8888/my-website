@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Github, ExternalLink, ChevronLeft, ChevronRight, Lightbulb } from "lucide-react";
+import { Github, ChevronLeft, ChevronRight, Lightbulb } from "lucide-react";
 import { useState } from "react";
 
 function ImageCarousel({ images, title }: { images: string[]; title: string }) {
