@@ -122,7 +122,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <span className="bg-gradient-to-r from-[var(--pastel-purple)] via-[var(--pastel-blue)] to-[var(--pastel-pink)] bg-clip-text text-transparent">
+              <span className="gradient-heading">
                 Hi, I'm Sarah!
               </span>
             </motion.h1>
@@ -166,9 +166,9 @@ export default function Home() {
           className="max-w-4xl mx-auto"
         >
           <div
-            className="rounded-3xl p-12 shadow-lg backdrop-blur-sm"
+            className="rounded-3xl p-12 shadow-lg backdrop-blur-sm bg-card border border-border"
             style={{
-              background: `linear-gradient(135deg, var(--pastel-purple)/10 0%, var(--pastel-blue)/10 100%)`,
+              background: `linear-gradient(135deg, var(--pastel-purple)/10 0%, var(--pastel-blue)/10 100%), var(--card)`,
               border: "1px solid var(--pastel-purple)/20",
             }}
           >
@@ -198,7 +198,7 @@ export default function Home() {
       </section>
 
       {/* Hobbies Section */}
-      <section className="py-20 px-6 bg-white/50">
+      <section className="py-20 px-6 bg-card/30 border-y border-border">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -207,7 +207,7 @@ export default function Home() {
             className="font-[family-name:var(--font-family-display)] text-center mb-12"
             style={{ fontSize: "2.5rem", fontWeight: 600 }}
           >
-            <span className="bg-gradient-to-r from-[var(--pastel-purple)] to-[var(--pastel-pink)] bg-clip-text text-transparent">
+            <span className="gradient-heading">
               Things I Love
             </span>
           </motion.h2>
@@ -222,7 +222,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -8, scale: 1.02 }}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all min-w-[250px] md:min-w-0"
+                  className="bg-card rounded-2xl p-6 shadow-md hover:shadow-xl transition-all min-w-[250px] md:min-w-0 border border-border"
                   style={{
                     borderLeft: `4px solid ${hobby.color}`,
                   }}

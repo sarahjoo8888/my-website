@@ -1,10 +1,12 @@
 import { NavLink } from "react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -15,7 +17,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[var(--pastel-purple)]/30">
+    <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-[var(--pastel-purple)]/30">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <NavLink
@@ -34,10 +36,10 @@ export default function Navigation() {
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `px-5 py-2 rounded-full text-[var(--type-purple)] transition-all ${
+                `px-5 py-2 rounded-full text-[var(--pastel-purple)] transition-all ${
                   isActive
-                    ? "bg-[var(--type-purple)]/20 text-[var(--type-purple)]"
-                    : "hover:bg-[var(--type-purple)]/10"
+                    ? "bg-[var(--pastel-purple)]/20 text-[var(--pastel-purple)]"
+                    : "hover:bg-[var(--pastel-purple)]/10"
                 }`
               }
               style={{ fontWeight: 500 }}
@@ -45,16 +47,34 @@ export default function Navigation() {
               {link.label}
             </NavLink>
           ))}
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="ml-2 p-2 rounded-full hover:bg-[var(--pastel-purple)]/10 transition-all text-[var(--pastel-purple)]"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-[var(--pastel-purple)]"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button & Theme Toggle */}
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-[var(--pastel-purple)]/10 transition-all text-[var(--pastel-purple)]"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
+          <button
+            className="p-2 text-[var(--pastel-purple)]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -64,7 +84,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-md border-t border-[var(--pastel-purple)]/20"
+            className="md:hidden bg-card/95 backdrop-blur-md border-t border-[var(--pastel-purple)]/20"
           >
             <div className="px-6 py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -74,10 +94,10 @@ export default function Navigation() {
                   end={link.to === "/"}
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
-                    `px-5 py-3 rounded-2xl text-[var(--type-purple)] transition-all ${
+                    `px-5 py-3 rounded-2xl text-[var(--pastel-purple)] transition-all ${
                       isActive
-                        ? "bg-[var(--type-purple)]/20"
-                        : "hover:bg-[var(--type-purple)]/10"
+                        ? "bg-[var(--pastel-purple)]/20"
+                        : "hover:bg-[var(--pastel-purple)]/10"
                     }`
                   }
                   style={{ fontWeight: 500 }}
