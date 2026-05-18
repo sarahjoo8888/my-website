@@ -110,7 +110,7 @@ export default function Projects() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Lightbulb className="w-8 h-8" style={{ color: "var(--pastel-purple)" }} />
             <h1
-              className="font-[family-name:var(--font-family-display)] bg-gradient-to-r from-[var(--pastel-purple)] via-[var(--pastel-blue)] to-[var(--pastel-pink)] bg-clip-text text-transparent"
+              className="font-[family-name:var(--font-family-display)] gradient-heading"
               style={{ fontSize: "3rem", fontWeight: 700 }}
             >
               Projects
@@ -127,7 +127,7 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -8 }}
-              className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all"
+              className="bg-card rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all border border-border"
               style={{ borderTop: `4px solid ${project.borderColor}` }}
             >
               <ImageCarousel images={project.images} title={project.title} />

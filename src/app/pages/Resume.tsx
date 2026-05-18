@@ -24,7 +24,7 @@ export default function Resume() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <FileText className="w-8 h-8" style={{ color: "var(--pastel-purple)" }} />
             <h1
-              className="font-[family-name:var(--font-family-display)] bg-gradient-to-r from-[var(--pastel-purple)] via-[var(--pastel-blue)] to-[var(--pastel-pink)] bg-clip-text text-transparent"
+              className="font-[family-name:var(--font-family-display)] gradient-heading"
               style={{ fontSize: "3rem", fontWeight: 700 }}
             >
               Resume
